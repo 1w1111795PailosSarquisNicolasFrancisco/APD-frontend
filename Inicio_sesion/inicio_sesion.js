@@ -1,7 +1,7 @@
 $("#btnIniciar").click(function () {
 
     let comando = {
-        "usuario": $("#email").val(),
+        "user": $("#email").val(),
         "password": $("#password").val(),
     }
     console.log(comando)
