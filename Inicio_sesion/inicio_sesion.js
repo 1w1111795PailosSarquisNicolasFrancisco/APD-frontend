@@ -16,7 +16,7 @@ $("#btnIniciar").click(function () {
         success: function (result) {
             console.log(result); {
                 if (result.ok) {
-                    alert("resultado exitoso");                      
+                    window.location.repacle("../inicio/inicio.html")                 
                 } else {
                     alert(result.return);
                 }
