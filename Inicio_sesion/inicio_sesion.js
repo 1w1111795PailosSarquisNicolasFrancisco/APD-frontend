@@ -15,8 +15,8 @@ $("#btnIniciar").click(function () {
         success: function (result) {
             {
                 if (result.ok) {
-                    localStorage.setItem("tokenSesion" ,JSON.stringify(result.return.tokenSesion));
-                    window.location.repacle("../inicio/inicio.html")                 
+                    localStorage.setItem("tokenSesion", JSON.stringify(result.return.tokenSesion));
+                    window.location.replace("../inicio/index.html")
                 } else {
                     alert(result.return.tokenSesion);
                 }

@@ -5,43 +5,53 @@
         <title>Listado Usuarios</title>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="../../Imagenes/logo-super-mami.png" height="30"
-            class="d-inline-block align-top" alt="">
-          APD</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="/Inicio_sesion/inicio_sesion.html">Inicio <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pedidos</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Reportes
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="/Reportes/ArticulosMasVendidos/ReporteArticulosMasVendidos.html">Productos mas vendidos</a></li>
-              </ul>
-            </li>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="#"><img src="../Imagenes/logo-super-mami.png" height="30"
+                    class="d-inline-block align-top" alt="">
+                APD</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="/Inicio_sesion/inicio_sesion.html">Inicio <span class="sr-only">(current)</span></a>
+                    </li>
+                  
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Clientes
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a class="dropdown-item" href="/Clientes/Registrarclientes.html">Registrar clientes</a></li>
+                              <li><a class="dropdown-item" href="/Clientes/ListadoClientes.html">Listado de clientes</a></li>
+                            </ul>
+                          </li>
     
-            <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
-                aria-expanded="false">
-                Clientes
-              </a>
-              <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <li><a class="dropdown-item" href="/Clientes/Registrarclientes.html">Registrar clientes</a></li>
-                <li><a class="dropdown-item" href="/Clientes/ModificarCliente.html">Modificar clientes</a></li>
-                <li><a class="dropdown-item" href="/Clientes/ListadoClientes.html">Listado clientes</a></li>
-              </ul>
-            </li>
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Usuarios
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a class="dropdown-item" href="/Usuarios/RegistrarUsuario.html">Registrar usuarios</a></li>
+                              <li><a class="dropdown-item" href="/Usuarios/ListadoUsuarios.html">Listado de usuarios</a></li>
+                            </ul>
+                          </li>
+
+                          <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Pedidos
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                              <li><a class="dropdown-item" href="/Pedidos/RegistrarPedidos.html">Registrar pedidos</a></li>
+                              <li><a class="dropdown-item" href="/Pedidos/ListadoPedidos.html">Listado de pedidos</a></li>
+                            </ul>
+                          </li>
+    
+                          <li class="nav-item">
+                            <a class="nav-link" href="#">Reportes</a>
+                        </li>
     
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown"
@@ -88,5 +98,45 @@
         </div>
    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    </body>
+   <script>
+    $(document).ready(function () {
+      var usuario = localStorage.getItem("emailUsuario");
+      if (usuario === "" || usuario == undefined) {
+          swal("Debe logearse primero")
+      } else {
+          $.ajax({
+        url: "https://localhost:5001/",
+        type: "GET",
+        success: function (result) {
+          if (result.ok) {
+            crearTabla(result.return);
+          } else {
+            swal(result.error);
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+      }
+      
+      swal("Hola " + usuario);
+    });
+    function crearTabla(datos) {
+      for (var i = 0; i < datos.length; i++) {
+        var html = "<tr>";
+        html += "<td>" + datos[i].id + "</td>";
+        html += "<td>" + datos[i].nombre + "</td>";
+        html += "<td>" + datos[i].apellido + "</td>";
+        if (datos[i].soltero) {
+          html += "<td>Si</td>";
+        } else {
+          html += "<td>No</td>";
+        }
+        html += "</tr>";
+        $("#cuerpoTabla").append(html);
+      }
+    }
+  </script>
+  </body>
 </html>
