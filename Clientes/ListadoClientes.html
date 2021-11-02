@@ -19,7 +19,7 @@
       <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
               <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Inicio <span class="sr-only">(current)</span></a>
+                  <a class="nav-link" href="../Inicio/index.html">Inicio <span class="sr-only">(current)</span></a>
               </li>
             
                   <li class="nav-item dropdown">
@@ -65,41 +65,21 @@
   </nav>
       <br>
       <div class="col-sm-12">
-        <table class="table table-bordered table-striped">
+        <table class="table table-bordered table-striped" id="cuerpoTabla">
           <thead class="table-dark">
             <tr>
               <th style="text-align: center">ID</th>
               <th style="text-align: center">NOMBRE</th>
-              <th style="text-align: center">APELLIDO</th>
-              <th style="text-align: center">Dni</th>
+              <th style="text-align: center">CANTIDAD DE PEDIDOS</th>
+              <th style="text-align: center">CLASIFICACIONES</th>
               <th style="text-align: center">TELEFONO</th>
               <th style="text-align: center">E-MAIL</th>
+              <th style="text-align: center">DIRECCION</th>
               <th style="text-align: center">ZONA</th>
-              <th style="text-align: center">FECHA DE NACIMIENTO</th>
-              <th style="text-align: center">DOMICILIO</th>
               <th style="text-align: center">ACCIONES</th>
             </tr>
           </thead>
-          <tbody>
-            <c:forEach var="cliente" items="${lista}">
-              <tr>
-                <td style="text-align: center">${id}</td>
-                <td>${nombre}</td>
-                <td style="text-align: center">${apellido}</td>
-                <td style="text-align: center">${dni}</td>
-                <td style="text-align: center">${telefono}</td>
-                <td>${email}</td>
-                <td style="text-align: center">${zona}</td>
-                <td style="text-align: center">${fecha_Nacimiento}</td>
-                <td style="text-align: center">${Domicilio}</td>
 
-                <td> <a class="btn btn-warning"
-                    href="/Clientes/ModificarCliente.html">Editar</a> &nbsp;
-                  <a class="btn btn-danger" href="">Eliminar</a></td>
-
-              </tr>
-            </c:forEach>
-          </tbody>
         </table>
       </div>
       <div class="col-sm-6">
@@ -107,12 +87,80 @@
         <a style="margin-left: 10px; border: none" class="btn btn-primary"
           href="/Inicio/index.html"> Volver al Inicio</a>
       </div>
-      <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"></script>
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+    integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+        <script>
+          $(document).ready(function () {
+              var token = localStorage.getItem("tokenSesion");
+            if (token == null) {
+                  window.location.replace("../inicio_sesion/inicio_sesion.html")
+            } else {
+                $.ajax({
+              url: "https://localhost:5001/Cliente/ObtenerClientes",
+              type: "GET",
+              success: function (result) {
+                if (result.ok) {
+                  crearTabla(result.return);
+                } else {
+                  swal(result.error);
+                }
+              },
+              error: function (error) {
+                console.log(error);
+              },
+            });
+            }
+          });
+      
+          function eliminarPedido(id) {
+              $.ajax({
+                  url: "https://localhost:5001/Cliente/EliminarCliente/" + id,
+                  type: "PUT",
+                  dataType: "json",
+                  contentType:"application/json",
+                  success: function (result) {
+                      if(result.ok) {
+                          swal("Eliminacion Exitosa!", "Se ha eliminado el cliente exitosamente");
+                          setTimeout(function(){
+                            location.reload();
+                          },5000);
+                      } else {
+                          swal(result.error);
+                      }
+                  },
+                  error: function (error) {
+                      console.log(error);
+                  }
+              });
+          }
+          function reinciar() {
+            location.reload();
+          }
+          
+          function crearTabla(datos) {
+              for (var i = 0; i < datos.length; i++) {
+              var html = "<tbody><tr>";
+              html += "<td>" + datos[i].id + "</td>";
+              html += "<td>" + datos[i].nombre + "</td>";
+              html += "<td>" + datos[i].cantidadPedidos + "</td>";
+              html += "<td>" + datos[i].clasificaciones + "</td>";
+              html += "<td>" + datos[i].telefono + "</td>";
+              html += "<td>" + datos[i].mail + "</td>";
+              html += "<td>" + datos[i].direccion + "</td>";
+              html += "<td>" + datos[i].idZona + "</td>";
+      
+              html += "<td><div class=\"text-center\"> <a class=\"btn btn-warning\"";
+              html += "href=\"/Usuarios/ModificarUsuario.html\">Editar</a> &nbsp";
+              html += "<input type=\"button\" class=\"btn btn-danger\" href=\"\" id=\"btnEliminar\" onClick=\"eliminarPedido(" + datos[i].id + ")\" value=\"Eliminar\"></div></td>";
+              html += "</tr></tbody>";
+              $("#cuerpoTabla").append(html);
+              }
+          }
+          </script>
     </body>
   </html>
