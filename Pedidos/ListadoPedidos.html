@@ -106,6 +106,7 @@
 
 
       <script>
+        let datos_asd;
     $(document).ready(function () {
         var token = localStorage.getItem("tokenSesion");
       if (token == null) {
@@ -117,6 +118,7 @@
         success: function (result) {
           if (result.ok) {
             crearTabla(result.return);
+            datos_asd = result.return;
           } else {
             swal(result.error);
           }
@@ -152,6 +154,30 @@
     function reinciar() {
       location.reload();
     }
+
+    function masinfo(id){
+      $.ajax({
+            url: "https://localhost:5001/Articulos/ObtenerArticulosXPedido/" + datos_asd[id].id,
+            type: "GET",
+            dataType: "json",
+            contentType:"application/json",
+            success: function (result) {
+                if(result.ok) {
+                    linea = ""
+                    result.return.forEach(element => {
+                      linea += "\n" + element.articulos.nombre + ", cantidad: " + element.cantidad;
+                    });
+                    swal("Informacion del pedido:", "Cliente: " + datos_asd[id].clientes.nombre + "\nEstado: " + datos_asd[id].estado +"\n Lista de articulos:" + linea);
+                } else {
+                    swal(result.error);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
+
+    }
     
     function crearTabla(datos) {
         for (var i = 0; i < datos.length; i++) {
@@ -162,7 +188,8 @@
 
         html += "<td><div class=\"text-center\"> <a class=\"btn btn-warning\"";
         html += "href=\"/Usuarios/ModificarUsuario.html\">Editar</a> &nbsp";
-        html += "<input type=\"button\" class=\"btn btn-danger\" href=\"\" id=\"btnEliminar\" onClick=\"eliminarPedido(" + datos[i].id + ")\" value=\"Eliminar\"></div></td>";
+        html += "<input type=\"button\" class=\"btn btn-danger\" href=\"\" id=\"btnEliminar\" onClick=\"eliminarPedido(" + datos[i].id + ")\" value=\"Eliminar\"> &nbsp";
+        html += "<input type=\"button\" class=\"btn btn-info\" onClick=\"masinfo(" + i + ")\" value=\"Mas Informacion\"></div></td>";
         html += "</tr></tbody>";
         $("#cuerpoTabla").append(html);
         }
