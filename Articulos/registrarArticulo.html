@@ -147,60 +147,64 @@
 
                 </form>
 
-                <input type="submit" value="Agregar" class="btn btn-info" id="btnAgregar"> </input>&nbsp;&nbsp;
-                <a href="/Inicio/index.html" class="btn btn-success my-2 my-sm-0">Cancelar</a>
+            </div>
+        </div>
+    </div>
+
+    <input type="submit" value="Agregar" class="btn btn-info" id="btnAgregar"> </input>&nbsp;&nbsp;
+    <a href="/Inicio/index.html" class="btn btn-success my-2 my-sm-0">Cancelar</a>
 
 
-                <script>
-                    function Validar() {
+    <script>
+        function Validar() {
 
-                        let txtArticulo = document.getElementById('txtArticulo');
-                        let txtMarca = document.getElementById('txtMarca');
-                        let txtProveedor = document.getElementById('txtProveedor');
-                        let txtPrecio = document.getElementById('txtPrecio');
-                        let txtStock = document.getElementById('txtStock');
-                        let txtDescripcion = document.getElementById('txtDescripcion');
-
-
-                        if (txtArticulo.value === "") {
-                            swal('Ingrese codigo de articulo');
-                        }
-
-                        if (txtMarca.value === "") {
-                            swal('Ingrese la Marca');
-                        }
-                        if (txtProveedor.value === "") {
-                            swal('Ingrese proveedor');
-                        }
-                        if (txtPrecio.value === "") {
-                            swal('Ingrese precio del producto');
-                        }
-                        if (txtStock.value) {
-                            swal('Ingrese el stock');
-                        }
-                        if (isNaN(txtStock.value)) {
-                            swal('Ingrese Solo Numeros en el stock');
-                        }
-                        if (txtDescripcion.value === "") {
-                            swal('Ingrese descripcion del producto');
-                        }
-                        else {
-                            swal('Datos cargados exitosamente');
-                        }
+            let txtArticulo = document.getElementById('txtArticulo');
+            let txtMarca = document.getElementById('txtMarca');
+            let txtProveedor = document.getElementById('txtProveedor');
+            let txtPrecio = document.getElementById('txtPrecio');
+            let txtStock = document.getElementById('txtStock');
+            let txtDescripcion = document.getElementById('txtDescripcion');
 
 
-                    }
+            if (txtArticulo.value === "") {
+                swal('Ingrese codigo de articulo');
+            }
+
+            if (txtMarca.value === "") {
+                swal('Ingrese la Marca');
+            }
+            if (txtProveedor.value === "") {
+                swal('Ingrese proveedor');
+            }
+            if (txtPrecio.value === "") {
+                swal('Ingrese precio del producto');
+            }
+            if (txtStock.value) {
+                swal('Ingrese el stock');
+            }
+            if (isNaN(txtStock.value)) {
+                swal('Ingrese Solo Numeros en el stock');
+            }
+            if (txtDescripcion.value === "") {
+                swal('Ingrese descripcion del producto');
+            }
+            else {
+                swal('Datos cargados exitosamente');
+            }
 
 
-                    let btnAgregar = document.getElementById('btnAgregar');
-
-                    btnAgregar.addEventListener("click", Validar);
-                </script>
+        }
 
 
-                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-                    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-                    crossorigin="anonymous"></script>
-                <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+        let btnAgregar = document.getElementById('btnAgregar');
+
+        btnAgregar.addEventListener("click", Validar);
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
 
 </body>

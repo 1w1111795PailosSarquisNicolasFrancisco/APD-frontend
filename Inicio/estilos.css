@@ -1,0 +1,35 @@
+body{
+    background-color: #323233
+}
+
+.inicio{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+h1{
+    font-family: fantasy;
+    font-weight: bold;
+    font-size: 50px;
+    margin: 50px;
+    color: white;
+
+}
+
+img{
+    margin-bottom: 50px;
+}
+
+.tablero {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+    width: 600px;
+}
+
+.btn{
+    margin: 30px;
+}
