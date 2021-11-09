@@ -235,9 +235,11 @@
                   articulos.forEach(element => {
                     let nombre = "#seleccionado" + element.id;
                     if ($(nombre).is(':checked')) {
+                      let nombre_cantidad = "#cantidad" + element.id;
                       var comando_articulo = {
                         "idArticulo": element.id,
-                        "idPedido": id_pedido.id
+                        "idPedido": id_pedido.id,
+                        "cantidad": $(nombre_cantidad).val()
                       }
 
                       $.ajax({
