@@ -7,7 +7,7 @@
       crossorigin="anonymous">
     <title>Listado de clientes</title>
   </head>
-  <body>
+  <body style="background-color: #323233">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <a class="navbar-brand" href="#"><img src="../Imagenes/logo-super-mami.png" height="30"
               class="d-inline-block align-top" alt="">
@@ -127,5 +127,74 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+
+      <script>
+          $(document).ready(function () {
+              var token = localStorage.getItem("tokenSesion");
+            if (token == null) {
+                  window.location.replace("../inicio_sesion/inicio_sesion.html")
+            } else {
+                $.ajax({
+              url: "https://localhost:5001/Cliente/ObtenerClientes",
+              type: "GET",
+              success: function (result) {
+                if (result.ok) {
+                  crearTabla(result.return);
+                } else {
+                  swal(result.error);
+                }
+              },
+              error: function (error) {
+                console.log(error);
+              },
+            });
+            }
+          });
+      
+          function eliminarPedido(id) {
+              $.ajax({
+                  url: "https://localhost:5001/Cliente/EliminarCliente/" + id,
+                  type: "PUT",
+                  dataType: "json",
+                  contentType:"application/json",
+                  success: function (result) {
+                      if(result.ok) {
+                          swal("Eliminacion Exitosa!", "Se ha eliminado el cliente exitosamente");
+                          setTimeout(function(){
+                            location.reload();
+                          },5000);
+                      } else {
+                          swal(result.error);
+                      }
+                  },
+                  error: function (error) {
+                      console.log(error);
+                  }
+              });
+          }
+          function reinciar() {
+            location.reload();
+          }
+          
+          function crearTabla(datos) {
+              for (var i = 0; i < datos.length; i++) {
+              var html = "<tbody><tr>";
+              html += "<td>" + datos[i].id + "</td>";
+              html += "<td>" + datos[i].nombre + "</td>";
+              html += "<td>" + datos[i].cantidadPedidos + "</td>";
+              html += "<td>" + datos[i].clasificaciones + "</td>";
+              html += "<td>" + datos[i].telefono + "</td>";
+              html += "<td>" + datos[i].mail + "</td>";
+              html += "<td>" + datos[i].direccion + "</td>";
+              html += "<td>" + datos[i].idZona + "</td>";
+      
+              html += "<td><div class=\"text-center\"> <a class=\"btn btn-warning\"";
+              html += "href=\"/Usuarios/ModificarUsuario.html\">Editar</a> &nbsp";
+              html += "<input type=\"button\" class=\"btn btn-danger\" href=\"\" id=\"btnEliminar\" onClick=\"eliminarPedido(" + datos[i].id + ")\" value=\"Eliminar\"></div></td>";
+              html += "</tr></tbody>";
+              $("#cuerpoTabla").append(html);
+              }
+          }
+          </script> 
     </body>
   </html>
