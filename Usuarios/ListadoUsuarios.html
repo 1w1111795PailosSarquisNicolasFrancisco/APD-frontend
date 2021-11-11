@@ -2,79 +2,74 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+        <link rel="stylesheet" href="../Inicio/estilos.css">
         <title>Listado Usuarios</title>
     </head>
     <body>
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#"><img src="../Imagenes/logo-super-mami.png" height="30"
-                class="d-inline-block align-top" alt="">
-            APD</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                  <a class="nav-link" href="../Inicio/index.html">Inicio</a>
-                </li>
-              
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Clientes
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="/Clientes/Registrarclientes.html">Registrar clientes</a></li>
-                          <li><a class="dropdown-item" href="/Clientes/ListadoClientes.html">Listado clientes</a></li>
-                        </ul>
-                      </li>
-
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Usuarios
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="/Usuarios/RegistrarUsuario.html">Registrar usuarios</a></li>
-                          <li><a class="dropdown-item" href="/Usuarios/ListadoUsuarios.html">Listado usuarios</a></li>
-                        </ul>
-                      </li>
-
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Pedidos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="/Pedidos/RegistrarPedidos.html">Registrar pedidos</a></li>
-                          <li><a class="dropdown-item" href="/Pedidos/ListadoPedidos.html">Listado de pedidos</a></li>
-                        </ul>
-                      </li>
-
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            Articulos
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            <li><a class="dropdown-item" href="/Articulos/registrarArticulo.html">Registrar Articulo</a>
-                            </li>
-                            <li><a class="dropdown-item" href="/Articulos/listadoArticulos.html">Listado de Articulos</a>
-                            </li>
-                        </ul>
-                    </li>
-
-                      <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Reportes
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                          <li><a class="dropdown-item" href="/Reportes/ArticulosMasVendidos/ReporteArticulosMasVendidos.html">Articulos mas vendidos</a></li>
-                          <li><a class="dropdown-item" href="/Reportes/ClienteMasFrecuente/ReporteClienteMasFrecuente.html">Clientes mas frecuentes</a></li>
-                          <li><a class="dropdown-item" href="../Articulos/ListadoProductosSinStock.html">Productos sin stock</a></li>
-                        </ul>
-                      </li>
-
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top">
+        <div class="container">
+            <a class="navbar-brand" href="../Inicio/index.html">SuperMaMi</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobile_nav" aria-controls="mobile_nav" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span> 
+            </button>
+            <div class="collapse navbar-collapse" id="mobile_nav">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0 float-md-right">
+            </ul>
+            <ul class="navbar-nav navbar-light">
+                <li class="nav-item"><a class="nav-link" href="../Inicio/index.html">Inicio</a></li>
+                <li class="nav-item dmenu dropdown">
+                    <a class="nav-link dropdown-toggle" href="../Clientes/ListadoClientes.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Clientes
+                    </a>
+                    <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="../Clientes/Registrarclientes.html">Ingresar nuevo Cliente</a>
+                        <a class="dropdown-item" href="../Clientes/ListadoClientes.html">Ver Listado de Clientes</a>
                     </div>
-    </nav>
+                </li>
+                <li class="nav-item dmenu dropdown">
+                  <a class="nav-link dropdown-toggle" href="../Usuarios/ListadoUsuarios.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Usuarios
+                  </a>
+                  <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="../Usuarios/RegistrarUsuario.html">Ingresar nuevo Usuario</a>
+                      <a class="dropdown-item" href="../Usuarios/ListadoUsuarios.html">Ver Listado de Usuarios</a>
+                  </div>
+              </li>
+              <li class="nav-item dmenu dropdown">
+                <a class="nav-link dropdown-toggle" href="../Pedidos/ListadoPedidos.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Pedidos
+                </a>
+                <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="../Pedidos/RegistrarPedidos.html">Ingresar nuevo Pedido</a>
+                    <a class="dropdown-item" href="../Pedidos/ListadoPedidos.html">Ver Listado de Pedidos</a>
+                </div>
+            </li>
+            <li class="nav-item dmenu dropdown">
+              <a class="nav-link dropdown-toggle" href="../Articulos/listadoArticulos.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Articulos
+              </a>
+              <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="../Articulos/registrarArticulo.html">Ingresar nuevo Articulo</a>
+                  <a class="dropdown-item" href="../Articulos/listadoArticulos.html">Ver Listado de Articulos</a>
+              </div>
+          </li>
+          <li class="nav-item dmenu dropdown">
+            <a class="nav-link dropdown-toggle" href="../Reportes/ArticulosMasVendidos/ReporteArticulosMasVendidos.html" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Reportes
+            </a>
+            <div class="dropdown-menu sm-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="../Reportes/ArticulosMasVendidos/ReporteArticulosMasVendidos.html">Articulos mas Vendidos</a>
+                <a class="dropdown-item" href="../Reportes/ClienteMasFrecuente/ReporteClienteMasFrecuente.html">Clientes mas Frecuentes</a>
+                <a class="dropdown-item" href="../Articulos/ListadoProductosSinStock.html">Productos sin Stock</a>
+    
+            </div>
+        </li>
+                <li class="nav-item"><a class="nav-link" href="../Inicio/integrantes.html">APD</a></li>
+            </ul>
+            </div>
+        </div>
+      </nav>
         <br>
         <div class="col-sm-12"> 
             <table  class="table table-bordered table-striped" id="cuerpoTabla" >
@@ -97,6 +92,7 @@
         integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <script src=" https://unpkg.com/sweetalert/dist/sweetalert.min.js "></script>
+        <script src="../Inicio/navbar.js"></script>
     <script>
     $(document).ready(function () {
         var token = localStorage.getItem("tokenSesion");
