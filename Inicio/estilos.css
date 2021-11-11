@@ -1,7 +1,3 @@
-body{
-    background-color: #323233
-}
-
 .inicio{
     display: flex;
     align-items: center;
@@ -18,6 +14,10 @@ body{
 
 } */
 
+h5 {
+    font-size: 16px;
+}
+
 .tablero {
     display: flex;
     flex-direction: column;
@@ -26,13 +26,10 @@ body{
     width: 600px;
 }
 
-body {
-    background-color: rgb(80, 25, 25)
-}
-
 .card {
     border: none;
-    border-radius: 10px
+    border-radius: 10px;
+    background-color: #F3F0E9;
 }
 
 .c-details span {
@@ -64,15 +61,6 @@ body {
     align-items: center
 }
 
-.progress {
-    height: 10px;
-    border-radius: 10px
-}
-
-.progress div {
-    background-color: red
-}
-
 .text1 {
     font-size: 14px;
     font-weight: 600
@@ -80,4 +68,81 @@ body {
 
 .text2 {
     color: #a5aec0
+}
+
+body {
+    background: #880C25 !important;
+}
+.navbar{
+    background: #F3F0E9;
+    padding-top: 0;
+    padding-bottom: 0;
+    box-shadow: 1px 3px 4px 0 #adadad33;
+}
+.navbar-light .navbar-brand {
+    color: #710117;
+}
+.navbar-light .navbar-nav .nav-link {
+    color: #192226;
+}
+.navbar-light .navbar-brand:focus, .navbar-light .navbar-brand:hover {
+    color: #13292A;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+    color: #fff;
+}
+.navbar-light .navbar-nav .nav-link{
+    padding-top: 22px;
+    padding-bottom: 22px;
+    transition: 0.3s;
+    padding-left: 24px;
+    padding-right: 24px;
+        font-size: 15px;
+}
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover{
+    background: #13292A;
+    transition: 0.3s;
+}
+.dropdown-item:focus, .dropdown-item:hover {
+   color: #fff;
+   text-decoration: none;
+   background-color: #13292A !important;
+}
+.sm-menu{
+   border-radius: 0px;
+   border: 0px;
+   top: 97%;
+   box-shadow: rgba(173, 173, 173, 0.2) 1px 3px 4px 0px;
+}
+.dropdown-item {
+   color: #3c3c3c;
+       font-size: 14px;
+}
+.dropdown-item.active, .dropdown-item:active {
+   color: #fff;
+   text-decoration: none;
+   background-color: #2196F3;
+}
+.navbar-toggler{
+   outline: none !important;
+}
+.navbar-tog{
+   color: #4e9597;
+}
+.megamenu-li {
+   position: static;
+}
+
+.megamenu {
+   position: absolute;
+   width: 100%;
+   left: 0;
+   right: 0;
+   padding: 15px;
+}
+.megamenu h6{
+   margin-left: 21px;
+}
+.megamenu i{
+   width: 20px;
 }
