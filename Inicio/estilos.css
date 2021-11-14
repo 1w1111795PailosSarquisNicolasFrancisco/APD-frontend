@@ -73,6 +73,10 @@ h5 {
 body {
     background: #880C25 !important;
 }
+card-body {
+    background-color: #F3F0E9;
+}
+
 .navbar{
     background: #F3F0E9;
     padding-top: 0;
