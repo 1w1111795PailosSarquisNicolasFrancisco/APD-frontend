@@ -139,7 +139,7 @@
 
                     <br>
                     <div class="text-center">
-                        <input type="submit" value="Agregar" class="btn btn-info" id="btnAgregar"> </input>&nbsp;&nbsp;
+                        <input type="" value="Agregar" class="btn btn-info" id="btnAgregar"> </input>&nbsp;&nbsp;
                         <a href="/Inicio/index.html" class="btn btn-success my-2 my-sm-0">Cancelar</a>
                     </div>
 
@@ -198,7 +198,6 @@
             let txtProveedor = document.getElementById('cuerpoCombo');
             let txtPrecio = document.getElementById('txtPrecio');
             let txtStock = document.getElementById('txtStock');
-            alert(txtArticulo.value + txtProveedor.value + txtPrecio.value + txtStock.value)
 
 
             if (txtArticulo.value === "") {
@@ -222,7 +221,6 @@
                 var stock = txtStock.value;
                 var precio = txtPrecio.value;
                 var idProveedor = txtProveedor.value;
-                alert('datos validados');
                 let comando = {
                     "nombre": nombre,
                     "stock": stock,
@@ -238,10 +236,10 @@
                     contentType: "application/json",
                     success: function (result) {
                         if (result.ok) {
-                            alert("Carga completada", "Se ha agregado el articulo correctamente");
-                            setTimeout(function () {
-                                window.location.replace("listadoArticulos.html");
-                            }, 5000);
+                            swal("Carga completada", "Se ha agregado el articulo correctamente");
+                      setTimeout(function(){
+                      window.location.replace("listadoArticulos.html");
+                    },1000);
                         } else {
                             alert(result.error);
                         }

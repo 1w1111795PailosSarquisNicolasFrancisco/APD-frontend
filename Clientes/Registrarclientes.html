@@ -231,12 +231,14 @@
               if (Validar()) {
                 let comando = {
                     "nombre": $("#txtnombre").val() + " " + $("#txtapellido").val(),
+                    "cantidadPedidos": "0",
                     "clasificaciones": $("#txtclasificaciones").val(),
                     "telefono": $("#txttelefono").val(),
                     "mail": $("#txtemail").val(),
                     "direccion": $("#txtdire").val(),
-                    "idZona": $("#cuerpoCombo").val(),
+                    "idZona": 1,
                   }
+                  console.log(comando)
                 swal('Datos enviados con exito');
                 $.ajax({
                   url: "https://localhost:5001/Clientes/AltaCliente",

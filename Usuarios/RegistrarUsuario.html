@@ -88,11 +88,13 @@
                         <div class="col">
                           <label class="font-monospace">Rol</label>
                           <select class="form-select" id="cuerpoCombo">
-                            <option selected></option>
+                            <option selected value="1">Administrador</option>
+                            <option  value="2">Empleado</option>
+                            <option  value="3">Gerente</option>
                           </select>
                       </div>
                       </div>
-                      <input type="submit" value="Guardar" class="btn btn-info m-1" style="color: white;" onclick="registro()" > </input>&nbsp;&nbsp;
+                      <input type="" value="Guardar" class="btn btn-info m-1" style="color: white;" onclick="registro()" > </input>&nbsp;&nbsp;
                       <a href="/Inicio/index.html" class="btn btn-success my-2 my-sm-0 m-1" >Volver</a>
                     </div>
                     
@@ -155,14 +157,14 @@
                   return true;
                   }
                   function registro(){
-              if (Validar()) {
+              if (true) {
                 let comando = {
                     "user": $("#txtusuario").val(),
                     "password": $("#txtcontraseña").val(),
-                    "idRol": $("cuerpoCombo").val(),
+                    "idRol": $("#cuerpoCombo").val(),
                   }
                 $.ajax({
-                  url: "https://localhost:5001/Usuarios/AltaUsuario",
+                  url: "https://localhost:5001/Usuario/AltaUsuario",
                   type: "POST",
                   data: JSON.stringify(comando),
                   dataType: "json",

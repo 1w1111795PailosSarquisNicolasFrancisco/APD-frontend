@@ -119,7 +119,7 @@
 
     function eliminarPedido(id) {
         $.ajax({
-            url: "https://localhost:5001/Usuario/EliminarUsuarios/" + id,
+            url: "https://localhost:5001/Usuario/EliminarUsuario/" + id,
             type: "PUT",
             dataType: "json",
             contentType:"application/json",
@@ -127,8 +127,8 @@
                 if(result.ok) {
                     swal("Eliminacion Exitosa!", "Se ha eliminado el usuario exitosamente");
                     setTimeout(function(){
-                      location.reload();
-                    },5000);
+                            location.reload();
+                          },1000);
                 } else {
                     swal(result.error);
                 }
@@ -147,8 +147,8 @@
         var html = "<tbody><tr>";
         html += "<td>" + datos[i].id + "</td>";
         html += "<td>" + datos[i].usuario + "</td>";
-        html += "<td>" + datos[i].clave + "</td>";
-        html += "<td>" + datos[i].idRol + "</td>";
+        html += "<td>*********</td>";
+        html += "<td>" + datos[i].roles.nombre + "</td>";
 
         html += "<td><div class=\"text-center\"> <a class=\"btn btn-warning\"";
         html += "href=\"/Usuarios/ModificarUsuario.html\">Editar</a> &nbsp";
