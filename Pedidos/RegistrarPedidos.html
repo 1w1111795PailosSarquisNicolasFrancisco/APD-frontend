@@ -105,6 +105,7 @@
             <br>
 
             <label for="Lista">Lista de Articulos</label>
+            <input class="form-control m-2" id="txtFiltro" type="text" placeholder="Buscar..">
             <table class="table table-bordered table-striped" id="cuerpoTabla">
               <thead class="table-dark">
                 <tr>
@@ -172,11 +173,17 @@
           console.log(error);
         },
       });
+      $("#txtFiltro").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+                $("#cuerpoTabla2 tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+            });
     })
     function crearTabla(datos) {
       articulos = datos;
       for (var i = 0; i < datos.length; i++) {
-        var html = "<tbody><tr>";
+        var html = "<tbody id=\"cuerpoTabla2\"><tr>";
         html += "<td>" + datos[i].nombre + "</td>";
         html += "<td>" + datos[i].precio + "</td>";
         html += "<td>  <input type=\"number\" class=\"form-control\" placeholder=\"Cantidad\" id=\"cantidad" + datos[i].id + "\"></td>";

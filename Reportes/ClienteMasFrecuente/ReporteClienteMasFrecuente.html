@@ -75,10 +75,24 @@
         </div>
     </div>
   </nav>
-  <h1 class="display-4 text-center m-2 text-white">Listado de clientes mas frecuentes</h1>
+  <h2 class="display-4 text-center text-white">Listado de clientes mas frecuentes</h1>
+  <div class="d-flex justify-content-center">
+  <div class="card " style="width: 400px; margin-bottom: 15px;">
+    <div class="card-body">
+      <label for="">Fechas:</label>
+              <label for="">Desde: </label>
+              <input id="dtpFechaInicial" name="dtpFechaInicial" class="form-control" type="datetime-local">
+              <label for="">Hasta: </label>
+              <input id="dtpFechaFinal" name="dtpFechaFinal" class="form-control" type="datetime-local">
+              <div class="d-flex justify-content-center">
+      <input id="btnFiltrarFecha" name="btnFiltrarFecha" type="button" class="btn btn-dark m-2" value="Filtrar por Fecha">
+    </div>
+    </div>
+  </div>
+</div>
   <div class="container card">
     <div class="card-body">
-      <div style="height: 70vh;">
+      <div style="height: 70vh;" id="canva">
         <canvas id="myChart"></canvas>
       </div>
       </div>   
