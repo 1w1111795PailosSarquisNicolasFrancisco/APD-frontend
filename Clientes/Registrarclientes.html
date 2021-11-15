@@ -119,7 +119,9 @@
                           <div class="col">
                             <label class="font-monospace">Zona</label>
                             <select class="form-select" id="cuerpoCombo">
-                              <option selected></option>
+                              <option selected>Alta Cordoba</option>
+                              <option >Cofico</option>
+                              <option >Alberdi</option>
                             </select>
                         </div>
                     
@@ -251,7 +253,7 @@
                       swal("Carga completada", "Se ha agregado el cliente correctamente");
                       setTimeout(function(){
                       window.location.replace("ListadoClientes.html");
-                    },5000);
+                    },1000);
                   } else {
                     swal(result.error);
                 }

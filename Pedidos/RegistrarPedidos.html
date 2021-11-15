@@ -219,7 +219,7 @@
           success: function (result) {
             {
               if (result.ok) {
-                swal("Exito", "Se registro con exito")
+                swal("Exito", "Se registro con exito")                
                 let id_pedido = result.return[result.return.length - 1];
                 if (result.ok) {
                   articulos.forEach(element => {
@@ -251,6 +251,9 @@
 
                     };
                   });
+                  setTimeout(function(){
+                  window.location.replace("ListadoPedidos.html");
+                          },2000);
                 }
 
               } else {
