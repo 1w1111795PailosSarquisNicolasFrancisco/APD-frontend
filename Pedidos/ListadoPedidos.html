@@ -73,6 +73,11 @@
       <br>
       <div class="container col-sm-12">
         <h1 class="display-4 text-center m-2 text-white">Listado de Pedidos</h1>
+        <label for="">Clientes:</label>
+                <select class="form-control" id="cboClientes">
+                  
+                </select>
+        <input id="btnFiltrar" name="btnFiltrar" type="button" class="btn btn-dark" value="Filtrar">
         <table class="table table-bordered table-hover table-dark" id="cuerpoTabla">
           <thead class="table-dark">
             <tr>
@@ -122,6 +127,27 @@
         },
       });
       }
+
+      $.ajax({
+        url: "https://localhost:5001/Cliente/ObtenerClientes",
+        type: "GET",
+        success: function (result) {
+          if (result.ok) {
+            cargarCombo(result.return);
+          } else {
+            swal(result.error);
+          }
+        },
+        error: function (error) {
+          console.log(error);
+        },
+      });
+
+    });
+    $("#btnFiltrar").click(function () {
+      let id = $("#cboClientes").val();
+      filtrarCliente(id);
+      console.log(id);
     });
 
     function eliminarPedido(id) {
@@ -149,6 +175,13 @@
       location.reload();
     }
 
+    function cargarCombo(datos) {
+      for (var i = 0; i < datos.length; i++) {
+        var html = "<option value=\"" + datos[i].id + "\">" + datos[i].nombre + "</option>";
+        $("#cboClientes").append(html);
+      }
+    }
+
     function masinfo(id){
       $.ajax({
             url: "https://localhost:5001/Articulos/ObtenerArticulosXPedido/" + datos_asd[id].id,
@@ -174,6 +207,7 @@
     }
     
     function crearTabla(datos) {
+      $("#cuerpoTabla").empty();
         for (var i = 0; i < datos.length; i++) {
         var html = "<tbody><tr>";
         html += "<td>" + datos[i].id + "</td>";
@@ -185,8 +219,27 @@
         html += "<input type=\"button\" class=\"btn btn-danger\" href=\"\" id=\"btnEliminar\" onClick=\"eliminarPedido(" + datos[i].id + ")\" value=\"Eliminar\"> &nbsp";
         html += "<input type=\"button\" class=\"btn btn-info\" onClick=\"masinfo(" + i + ")\" value=\"Mas Informacion\"></div></td>";
         html += "</tr></tbody>";
+        
         $("#cuerpoTabla").append(html);
         }
+    }
+    function filtrarCliente(id){
+        $.ajax({
+            url: "https://localhost:5001/Pedidos/ObtenerPedidosPorCliente/" + id,
+            type: "GET",
+            dataType: "json",
+            contentType:"application/json",
+            success: function (result) {
+                if(result.ok) {
+                    crearTabla(result.return);
+                } else {
+                    swal(result.error);
+                }
+            },
+            error: function (error) {
+                console.log(error);
+            }
+        });
     }
     </script>
     </body>
