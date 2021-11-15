@@ -96,6 +96,10 @@
                 </select>
               </div>
             </div>
+            <div class="col">
+              <label class="font-monospace">Fecha</label>
+          <input type="datetime-local" class="form-control" id="dtpFecha" name="dtpFecha">
+            </div>
 
 
             <br>
@@ -198,17 +202,21 @@
         return true
       }
 
+      
+
 
     }
 
     $("#btnSubmit").click(function () {
       let txtCliente = $("#cuerpoCombo").val();
       let txtEstado = $("#txtEstado").val();
+      let dtpFecha = $("#dtpFecha").val();
       if (true) {
 
         let comando = {
           "estado": txtEstado,
-          "idCliente": txtCliente
+          "idCliente": txtCliente,
+          "fecha": dtpFecha
         }
         $.ajax({
           url: "https://localhost:5001/Pedidos/AltaPedidos",

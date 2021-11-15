@@ -73,7 +73,8 @@
   <h1 class="display-4 text-center m-2 text-white">Listado de productos sin stock</h1>
       <br>
       <div class="container col-sm-12">
-        <table class="table table-bordered table-hover table-dark" id="cuerpoTabla">
+        <input class="form-control m-2" id="txtFiltro" type="text" placeholder="Buscar..">
+        <table class="table table-bordered table-hover table-dark m-2" id="cuerpoTabla">
           <thead class="table-dark">
             <tr>
               <th style="text-align: center">ID</th>
@@ -121,6 +122,12 @@
               },
             });
             }
+            $("#txtFiltro").on("keyup", function() {
+              var value = $(this).val().toLowerCase();
+                $("#cuerpoTabla2 tr").filter(function() {
+                  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+              });
+            });
           });
       
           
@@ -130,12 +137,12 @@
           
           function crearTabla(datos) {
               for (var i = 0; i < datos.length; i++) {
-              var html = "<tbody><tr>";
+              var html = "<tbody id=\"cuerpoTabla2\"><tr>";
               html += "<td>" + datos[i].id + "</td>";
               html += "<td>" + datos[i].nombre + "</td>";
               html += "<td>" + datos[i].stock + "</td>";
               html += "<td>" + datos[i].precio + "</td>";
-              html += "<td>" + datos[i].idProveedor + "</td>";
+              html += "<td>" + datos[i].idProveedor + "</td></tbody>";
              
       
              
