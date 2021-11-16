@@ -3,7 +3,7 @@ $(document).ready(function () {
     var cantidades = [];
 
     $.ajax({
-        url: "https://localhost:5001/Cliente/ObtenerClientes",
+        url: "https://localhost:5001/Cliente/ObtenerClientesRepo",
         type: "GET",
         dataType: "json",
         contentType: 'application/json',
@@ -12,7 +12,7 @@ $(document).ready(function () {
                 if (result.ok) {
                     result.return.forEach(element => {
                         nombres.push(element.nombre);
-                        cantidades.push(element.cantidadPedidos);
+                        cantidades.push(element.cantidad);
                     });
                     const ctx = document.getElementById('myChart').getContext('2d');
                     const myChart = new Chart(ctx, {
